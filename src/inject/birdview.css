@@ -1,0 +1,220 @@
+/****************************************************
+*
+* Birdview.css
+* 1.0
+*
+* www.achrafkassioui.com/birdview/
+*
+* 20 May 2017
+*
+****************************************************/
+
+#birdview_debug{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	color: #fff;
+	font-size: 24px;
+	line-height: 2em;
+	text-shadow: 0px 0px 5px #000;
+	text-align: center;
+	pointer-events: none;
+	z-index: +9999;
+}
+
+/****************************************************
+*
+* Button
+*
+****************************************************/
+
+#auto_generated_birdview_button{
+	position: fixed;
+	display: block;
+	width: 60px;
+	height: 60px;
+	right: 8px;
+	top: 8px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: #fff;
+	font-family: 'Futura-PT', Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 40px;
+	line-height: 54px;
+	border: none;
+	border-radius: 4px;
+	background: #01d1fb;
+	background: rgba(1, 209, 251, 0.8);
+	cursor: pointer;
+	z-index: +9998;
+}
+
+#auto_generated_birdview_button:hover,
+#auto_generated_birdview_button:active,
+#auto_generated_birdview_button:focus{
+	background: rgba(1, 209, 251, 1);
+	outline: none;
+}
+
+#auto_generated_birdview_button::-moz-focus-inner{
+	border: 0;
+}
+
+#auto_generated_birdview_button.hidden{
+	pointer-events: none;
+	opacity: 0;
+}
+
+/****************************************************
+*
+* Overlay
+*
+****************************************************/
+
+#auto_generated_birdview_overlay{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	color: #fff;
+	font-family: 'Futura-PT', Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+	font-style: normal;
+	font-size: 20px;
+	background: rgba(0, 0, 0, 0.4);
+	overflow: hidden;
+	z-index: +1000;
+	pointer-events: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	transition-property: opacity;
+	transition-timing-function: ease;
+	opacity: 0;
+}
+
+#auto_generated_birdview_overlay.show{
+	pointer-events: auto;
+	user-select: auto;
+	-moz-user-select: auto;
+	opacity: 1;
+	touch-action: pinch-zoom;
+}
+
+/*
+*
+* Overlay title
+*
+*/
+#auto_generated_birdview_overlay h1{
+	display: block;
+	max-width: 33%;
+	margin: 8px 16px 0px;
+	text-align: left;
+	color: #fff;
+	font-weight: 500;
+	font-size: 48px;
+}
+
+#auto_generated_birdview_overlay.zooming h1{
+	color: #01d1fb;
+}
+
+/*
+*
+* Breadcrumb navigation
+*
+*/
+#auto_generated_birdview_overlay a{
+	display: inline-block;
+	vertical-align: top;
+	max-width: 33%;
+	padding: 2px 4px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: inherit;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+#auto_generated_birdview_overlay a:first-of-type{
+	margin-left: 14px;
+}
+
+#auto_generated_birdview_overlay a:hover{
+	color: #fff;
+	background: #01d1fb;
+}
+
+/*
+*
+* Close button
+*
+*/
+#auto_generated_birdview_overlay button{
+	position: absolute;
+	width: 96px;
+	height: 96px;
+	right: 0;
+	top: 0;
+	margin: 0;
+	padding: 0;
+	color: transparent;
+	border: none;
+	background: transparent no-repeat center center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTkxOTI4MTIyNkJGMTFFN0JFQ0M5RTU3MERGOTc4ODUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTkxOTI4MTMyNkJGMTFFN0JFQ0M5RTU3MERGOTc4ODUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFOTE5MjgxMDI2QkYxMUU3QkVDQzlFNTcwREY5Nzg4NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFOTE5MjgxMTI2QkYxMUU3QkVDQzlFNTcwREY5Nzg4NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PusLg80AAAlpSURBVHja7J15cBVF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');
+	background-size: 40px;
+	cursor: pointer;
+}
+
+#auto_generated_birdview_overlay button:hover{
+	background-color: #01d1fb;
+}
+
+/*
+*
+* Help message
+*
+*/
+#auto_generated_birdview_overlay span{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	padding: 16px;
+	color: #eee;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.4em;
+}
+
+/*
+*
+* Responsive
+*
+*/
+@media screen and (max-width: 768px){
+	#auto_generated_birdview_overlay a{
+		max-width: 25%;
+		font-size: 16px;
+	}
+	#auto_generated_birdview_overlay h1{
+		margin: 4px 8px 0px;
+		font-size: 32px;
+	}
+	#auto_generated_birdview_overlay a{
+		max-width: 25%;
+	}
+	#auto_generated_birdview_overlay a:first-of-type{
+		margin-left: 6px;
+	}
+	#auto_generated_birdview_overlay button{
+		width: 72px;
+		height: 72px;
+		background-size: 32px;
+	}
+}
