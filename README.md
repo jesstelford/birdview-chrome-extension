@@ -2,7 +2,7 @@
 
 > Chrome Extension that gives you a glance at a whole web page with an aerial view
 
-**[Install in Chrome]()**
+**[Install in Chrome](https://chrome.google.com/webstore/detail/birdview/mkkcfebffmojpmhnnhjiocmhiidjogge)**
 
 _Based on [Achraf Kassioui](https://twitter.com/achrafkassioui)'s [Birdview.js](http://achrafkassioui.com/birdview)._
 
