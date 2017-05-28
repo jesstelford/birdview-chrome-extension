@@ -32,12 +32,7 @@ var options = [
 ];
 
 // Saves options to chrome.storage.sync.
-function saveOptions() {
-  var valuesHash = options.reduce(function(memo, option) {
-    memo[option.id] = document.querySelector('#' + option.id)[getValueType(option.type)];
-    return memo;
-  }, {});
-  console.log({ valuesHash });
+function saveOptions(valuesHash) {
   chrome.storage.sync.set(
     valuesHash,
     function() {
@@ -72,25 +67,47 @@ function createNodeFromString(str) {
   return div.firstChild;
 }
 
-document.getElementById('save').addEventListener('click', saveOptions);
+function loadOptions() {
+  chrome.storage.sync.get(
+    // Generate hash of default values
+    options.reduce(function(memo, option) {
+      memo[option.id] = option.default;
+      return memo;
+    }, {}),
+    function(items) {
+      var containerEl = document.querySelector('#container');
 
-chrome.storage.sync.get(
-  // Generate hash of default values
-  options.reduce(function(memo, option) {
+      options.forEach(function createOption(option) {
+        var html;
+        var valueAttr = getValueAttr(option.type, items[option.id]);
+        var element = containerEl.querySelector('#' + option.id);
+        if (element) {
+          element[getValueType(option.type)] = items[option.id];
+        } else {
+          html = '<label><input type="' + option.type + '" id="' + option.id + '" ' + valueAttr + '>' + option.display + '</label>';
+
+          containerEl.appendChild(createNodeFromString(html));
+        }
+      });
+    }
+  );
+}
+
+document.getElementById('save').addEventListener('click', function() {
+  var valuesHash = options.reduce(function(memo, option) {
+    memo[option.id] = document.querySelector('#' + option.id)[getValueType(option.type)];
+    return memo;
+  }, {});
+  saveOptions(valuesHash);
+});
+
+document.getElementById('defaults').addEventListener('click', function() {
+  var valuesHash = options.reduce(function(memo, option) {
     memo[option.id] = option.default;
     return memo;
-  }, {}),
-  function(items) {
-    console.log({ items });
-    var containerEl = document.querySelector('#container');
+  }, {});
+  saveOptions(valuesHash);
+  loadOptions();
+});
 
-    options.forEach(function createOption(option) {
-      var html;
-      var valueAttr = getValueAttr(option.type, items[option.id]);
-
-      html = '<label><input type="' + option.type + '" id="' + option.id + '" ' + valueAttr + '>' + option.display + '</label>';
-
-      containerEl.appendChild(createNodeFromString(html));
-    });
-  }
-);
+loadOptions();
