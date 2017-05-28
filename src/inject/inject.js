@@ -7,6 +7,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       document.dispatchEvent(event);
     } else {
       hasLoaded = true;
+
       var link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
@@ -16,10 +17,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       var script = document.createElement('script');
       script.src = chrome.extension.getURL('src/inject/birdview.js');
       script.onload = function() {
-        event = new Event('birdview:init');
-        document.dispatchEvent(event);
-        event = new Event('birdview:toggle');
-        document.dispatchEvent(event);
+        chrome.storage.sync.get(
+          null, // ie; get everything
+          function(items) {
+            event = new CustomEvent('birdview:init', { detail: { options: items }});
+            document.dispatchEvent(event);
+            event = new Event('birdview:toggle');
+            document.dispatchEvent(event);
+          }
+        );
       }
       document.head.appendChild(script);
     }

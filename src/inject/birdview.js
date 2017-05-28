@@ -35,8 +35,8 @@
 }(this, function() {
 	'use strict';
 
-  document.addEventListener('birdview:init', function() {
-    birdview.init();
+  document.addEventListener('birdview:init', function(event) {
+    birdview.init(event.detail.options || {});
   });
 
   document.addEventListener('birdview:toggle', function() {

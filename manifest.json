@@ -20,6 +20,10 @@
     ],
     "persistent": false
   },
+  "options_ui": {
+    "page": "src/options.html",
+    "chrome_style": true
+  },
   "browser_action": {
     "default_title": "browser action demo",
     "default_icon": {
@@ -34,7 +38,8 @@
   },
   "permissions": [
     "https://*/*",
-    "http://*/*"
+    "http://*/*",
+    "storage"
   ],
   "web_accessible_resources": [
     "src/inject/birdview.js",
